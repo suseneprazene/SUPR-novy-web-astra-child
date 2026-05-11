@@ -168,7 +168,9 @@ a.button,
 a.checkout-button,
 .woocommerce-button,
 .wc-block-cart__submit-button,
-.woocommerce .woocommerce-error .button, .woocommerce .woocommerce-info .button, .woocommerce .woocommerce-message .button, .woocommerce-page .woocommerce-error .button, .woocommerce-page .woocommerce-info .button, .woocommerce-page .woocommerce-message .button {
+.woocommerce .woocommerce-error .button, .woocommerce .woocommerce-info .button, .woocommerce .woocommerce-message .button, .woocommerce-page .woocommerce-error .button, .woocommerce-page .woocommerce-info .button, .woocommerce-page .woocommerce-message .button,
+.wp-block-latest-posts.wp-block-latest-posts__list li .wp-block-latest-posts__read-more,
+.category-item .custom-product-btn {
   background: #111 !important;
   color: #fff !important;
   border: 1px solid #111 !important;
@@ -205,7 +207,9 @@ a.checkout-button:hover,
 .woocommerce-page ul.products li.product a.button:hover, 
 .astra-shop-summary-wrap a.button:hover, 
 .astra-shop-summary-wrap a.single_add_to_cart_button:hover, 
-.astra-shop-summary-wrap a.add_to_cart_button:hover {
+.astra-shop-summary-wrap a.add_to_cart_button:hover
+.woocommerce-js div.product form.cart .button.single_add_to_cart_button:hover,
+ {
   background: #fff !important;
   color: #111 !important;
   border: 1px solid #111 !important;
@@ -834,29 +838,109 @@ button.menu-toggle:hover {
    ============================================================ */
 
 /* ── Hlavní tlačítko (DO KOŠÍKU / VÝBĚR PRODUKTŮ) ── */
+/* Default: skryté (aby se neukazovalo všude) */
 .custom-product-btn {
-  display: inline-block;
-  padding: 8px 18px;
-  background-color: #111;
-  color: #fff;
-  border: 1px solid #111;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  display: none;
+  background: #111 !important;
+  color: #fff !important;
+  border: 1px solid #111 !important;
+  border-radius: 0 !important;
+  padding: 10px 24px !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  transition: background 0.2s, color 0.2s, font-size 0.18s ease, transform 0.2s, box-shadow 0.2s !important;
+}
+
+/* ── Viditelnost tlačítka – kompletní pravidla ──────────────────
+   HOMEPAGE:    hover na .category-item
+   PC ARCHIV:   hover na .sp-product-item  (desktop s myší)
+   MOBIL/TOUCH: vždy viditelné v .sp-archive-wrapper
+   MODAL:       vždy viditelné (#sp-cfb-bundle-add)
+   ────────────────────────────────────────────────────────────── */
+
+/* Homepage – při hoveru na kategorii */
+body.home .category-item:hover .custom-product-btn {
+  display: inline-block !important;
+}
+
+/* PC archiv/kategorie – při hoveru na produkt */
+.sp-product-item:hover .custom-product-btn {
+  display: inline-block !important;
+}
+
+/* Otevřený produkt (.open) – tlačítka vždy viditelná bez hoveru */
+.sp-product-item.open .custom-product-btn {
+  display: inline-block !important;
+}
+
+/* Modal – vždy viditelné */
+#sp-cfb-bundle-dialog #sp-cfb-bundle-add.custom-product-btn {
+  display: inline-flex !important;
+}
+
+/* Mobil/tablet (touch zařízení) – vždy viditelné v archivu
+   @media (hover: none) = zařízení bez myši (telefon, tablet) */
+@media (hover: none) {
+  .sp-archive-wrapper .custom-product-btn,
+  .sp-archive-wrapper .sp-product-item .custom-product-btn {
+    display: inline-flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
 }
 
 .custom-product-btn:hover {
-  background-color: #333;
-  color: #fff;
+  background: #fff !important;
+  color: #111 !important;
+  border: 1px solid #111 !important;
+  font-size: 1.06rem !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10) !important;
+  text-decoration: none !important;
 }
 
-.custom-product-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.custom-product-btn:disabled,
+.custom-product-btn[disabled] {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ── Latest Posts – odkazy jako tlačítka ── */
+.wp-block-latest-posts.wp-block-latest-posts__list li > a,
+.wp-block-latest-posts__list .wp-block-latest-posts__post-title {
+  display: inline-block !important;
+  background: #111 !important;
+  color: #fff !important;
+  border: 1px solid #111 !important;
+  border-radius: 0 !important;
+  padding: 10px 24px !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  transition: background 0.2s, color 0.2s, font-size 0.18s ease, transform 0.2s, box-shadow 0.2s !important;
+}
+
+.wp-block-latest-posts.wp-block-latest-posts__list li > a:hover,
+.wp-block-latest-posts__list .wp-block-latest-posts__post-title:hover {
+  background: #fff !important;
+  color: #111 !important;
+  border: 1px solid #111 !important;
+  font-size: 1.06rem !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10) !important;
+  text-decoration: none !important;
 }
 
 /* ── Produkt není skladem ── */
@@ -873,158 +957,52 @@ button.menu-toggle:hover {
    Přebíjí hardcoded styly v <style> tagu pluginu.
    ============================================================ */
 
-/* ── Řádek varianty ── */
-html body .cfb-flavor {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  min-height: 32px !important;
-  padding: 0 0 0 0.5rem !important;
-  gap: 8px !important;
-  margin: 0 !important;
-}
-
-/* ── Flex kontejner tlačítek ── */
-html body .cfb-controls {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: 0 !important;
+/* +/- tlačítka vedle každé varianty */
+.cfb-flavor-selector .cfb-button,
+.cfb-button.button {
+  background-color: #111 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 0 !important;
+  width: 32px !important;
   height: 32px !important;
-  flex-shrink: 0 !important;
-}
-
-/* ── +/− tlačítka ──
-   Globální .button { margin-bottom: 18px } z Astry přebíjíme cíleně zde.
-   html body prefix zajišťuje vyšší specifičnost než téma i inline styly pluginu. */
-html body .cfb-controls .cfb-button,
-html body .cfb-controls button.cfb-minus,
-html body .cfb-controls button.cfb-plus {
-  display: inline-flex !important;
+  line-height: 32px !important;
+  font-size: 18px !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 32px !important;
-  height: 32px !important;
-  min-width: 32px !important;
-  max-width: 32px !important;
-  line-height: 32px !important;
-  padding: 0 !important;
-  margin: 0 2px !important;          /* reset Astra margin-bottom: 18px */
-  font-size: 18px !important;
-  font-family: inherit !important;
-  font-weight: 400 !important;
-  text-transform: none !important;
-  letter-spacing: 0 !important;
-  background: #111 !important;
-  color: #fff !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  outline: none !important;
-  cursor: pointer !important;
-  flex-shrink: 0 !important;
-  box-sizing: border-box !important;
-  transform: none !important;
-  transition: background 0.15s !important;
-  animation: none !important;
 }
 
-html body .cfb-controls .cfb-button:hover {
-  background: #333 !important;
-  color: #fff !important;
-  transform: none !important;
-  box-shadow: none !important;
-  font-size: 18px !important;
+.cfb-flavor-selector .cfb-button:hover,
+.cfb-button.button:hover {
+  background-color: #333 !important;
 }
 
-html body .cfb-controls .cfb-button[disabled],
-html body .cfb-controls .cfb-button:disabled {
-  background: #ddd !important;
+.cfb-flavor-selector .cfb-button[disabled],
+.cfb-button.button[disabled] {
+  background-color: #ddd !important;
   color: #aaa !important;
   cursor: not-allowed !important;
-  opacity: 1 !important;
 }
 
-/* ── Číselný input ── */
-html body .cfb-controls input.cfb-quantity,
-html body .cfb-controls input[type="number"].cfb-quantity {
-  display: inline-flex !important;
-  width: 32px !important;
-  height: 32px !important;
-  min-width: 32px !important;
-  max-width: 32px !important;
-  line-height: 32px !important;
-  padding: 0 !important;
-  margin: 0 2px !important;
-  text-align: center !important;
-  font-size: 0.95rem !important;
-  font-family: inherit !important;
-  border: 1px solid #ddd !important;
-  border-radius: 0 !important;
-  background: #fff !important;
+/* Název varianty jako odkaz na detail */
+.cfb-label.cfb-product-link {
   color: #111 !important;
-  appearance: textfield !important;
-  -webkit-appearance: textfield !important;
-  -moz-appearance: textfield !important;
-  box-shadow: none !important;
-  outline: none !important;
-  vertical-align: middle !important;
-  flex-shrink: 0 !important;
-  box-sizing: border-box !important;
-  transform: none !important;
-}
-
-html body .cfb-controls input.cfb-quantity:focus {
-  outline: 2px solid #111 !important;
-  outline-offset: 1px !important;
-}
-
-/* Schovat spin buttony */
-html body .cfb-controls input.cfb-quantity::-webkit-outer-spin-button,
-html body .cfb-controls input.cfb-quantity::-webkit-inner-spin-button {
-  -webkit-appearance: none !important;
-  margin: 0 !important;
-}
-
-/* ── Název varianty jako odkaz na detail ── */
-a.cfb-label.cfb-product-link,
-.cfb-flavor a.cfb-label,
-.cfb-flavor-list .cfb-label.cfb-product-link,
-.cfb-flavor-selector .cfb-label.cfb-product-link,
-#sp-cfb-bundle-body .cfb-label.cfb-product-link {
-  color: #111 !important;
-  text-decoration: underline !important;
-  text-decoration-style: solid !important;
-  text-decoration-color: currentColor !important;
-  font-size: 0.95rem !important;
+  text-decoration: underline dotted #aaa !important;
   font-weight: normal !important;
-  background: none !important;
-  border: none !important;
-  padding: 0 !important;
-  display: inline !important;
-  transition: font-size 0.18s ease, text-decoration 0.18s ease !important;
-  letter-spacing: normal !important;
-  transform: none !important;
+  font-size: inherit !important;
 }
 
-a.cfb-label.cfb-product-link:hover,
-a.cfb-label.cfb-product-link:focus,
-.cfb-flavor a.cfb-label:hover,
-.cfb-flavor a.cfb-label:focus,
-.cfb-flavor-list .cfb-label.cfb-product-link:hover,
-.cfb-flavor-list .cfb-label.cfb-product-link:focus,
-.cfb-flavor-selector .cfb-label.cfb-product-link:hover,
-.cfb-flavor-selector .cfb-label.cfb-product-link:focus,
-#sp-cfb-bundle-body .cfb-label.cfb-product-link:hover,
-#sp-cfb-bundle-body .cfb-label.cfb-product-link:focus {
-  color: #111 !important;
-  text-decoration: none !important;
-  font-size: 0.99rem !important;
-  transform: none !important;
-  animation: none !important;
+.cfb-label.cfb-product-link:hover,
+.cfb-label.cfb-product-link:focus {
+  color: #0072c1 !important;
+  text-decoration: underline solid #0072c1 !important;
 }
 
-/* ── Informace o limitu ── */
+/* Informace o limitu (napr. "Limit: 3 balíčky") */
 .cfb-limit-info {
   font-weight: 500 !important;
   font-size: inherit !important;
@@ -1032,7 +1010,7 @@ a.cfb-label.cfb-product-link:focus,
   margin-bottom: 7px !important;
 }
 
-/* ── Chybová hláška ── */
+/* Chybová hláška uvnitř výběru */
 .cfb-error {
   color: #cc0000 !important;
   font-size: 0.9rem !important;
@@ -1198,6 +1176,147 @@ a.cfb-label.cfb-product-link:focus,
   line-height: 1.3 !important;
 }
 
+/* ── Odkaz na detail varianty (.cfb-product-link) ──
+   Chová se stejně jako globální a – normálně underline, hover: bez podtržení + mírné zvětšení. */
+a.cfb-label.cfb-product-link,
+.cfb-flavor a.cfb-label,
+.cfb-flavor-list .cfb-label.cfb-product-link,
+.cfb-flavor-selector .cfb-label.cfb-product-link,
+#sp-cfb-bundle-body .cfb-label.cfb-product-link {
+  color: #111 !important;
+  text-decoration: underline !important;
+  text-decoration-style: solid !important;
+  text-decoration-color: currentColor !important;
+  font-size: 0.95rem !important;
+  font-weight: normal !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  display: inline !important;
+  transition: font-size 0.18s ease, text-decoration 0.18s ease !important;
+  letter-spacing: normal !important;
+  transform: none !important;
+}
+
+a.cfb-label.cfb-product-link:hover,
+a.cfb-label.cfb-product-link:focus,
+.cfb-flavor a.cfb-label:hover,
+.cfb-flavor a.cfb-label:focus,
+.cfb-flavor-list .cfb-label.cfb-product-link:hover,
+.cfb-flavor-list .cfb-label.cfb-product-link:focus,
+.cfb-flavor-selector .cfb-label.cfb-product-link:hover,
+.cfb-flavor-selector .cfb-label.cfb-product-link:focus,
+#sp-cfb-bundle-body .cfb-label.cfb-product-link:hover,
+#sp-cfb-bundle-body .cfb-label.cfb-product-link:focus {
+  color: #111 !important;
+  text-decoration: none !important;
+  font-size: 0.99rem !important; /* 0.95rem × 1.04 ≈ 0.99rem */
+  transform: none !important;
+  animation: none !important;
+}
+
+/* ── cfb-quantity input – zobrazení čísla a zarovnání ──
+   Astra nastavuje input[type=number] { height: 40px } – musíme přebít
+   explicitním selektorem s type=number i s !important na height. */
+.cfb-flavor-selector .cfb-quantity,
+#sp-cfb-bundle-body .cfb-quantity,
+.cfb-controls input.cfb-quantity,
+.cfb-flavor .cfb-controls input[type="number"],
+input[type="number"].cfb-quantity {
+  display: inline-block !important;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  max-width: 32px !important;
+  line-height: 32px !important;
+  padding: 0 !important;
+  margin: 0 2px !important;
+  font-size: 0.9rem !important;
+  font-family: 'Cabinet Grotesk', system-ui, sans-serif !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+  border: 1px solid #ccc !important;
+  border-radius: 3px !important;
+  background: #fff !important;
+  color: #111 !important;
+  -moz-appearance: none !important;
+  /* reset transform/animation z globálního hover */
+  transform: none !important;
+}
+
+.cfb-flavor-selector .cfb-quantity:focus,
+#sp-cfb-bundle-body .cfb-quantity:focus {
+  outline: 2px solid #111 !important;
+  outline-offset: 1px !important;
+}
+
+/* Schovat spin buttony (webkit) */
+.cfb-flavor-selector .cfb-quantity::-webkit-outer-spin-button,
+.cfb-flavor-selector .cfb-quantity::-webkit-inner-spin-button,
+#sp-cfb-bundle-body .cfb-quantity::-webkit-outer-spin-button,
+#sp-cfb-bundle-body .cfb-quantity::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+/* ── cfb-controls flex container – zarovnání ── */
+.cfb-flavor-selector .cfb-controls,
+#sp-cfb-bundle-body .cfb-controls {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0 !important;
+  height: 32px !important;
+  flex-shrink: 0 !important;
+}
+
+/* ── cfb-flavor řádek – zarovnání celého řádku ── */
+.cfb-flavor-selector .cfb-flavor,
+#sp-cfb-bundle-body .cfb-flavor {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  min-height: 32px !important;
+  padding: 0 0 0 0.5rem !important;
+  gap: 8px !important;
+}
+/* ============================================================
+   ADMIN BAR – výjimka z child theme globálních stylů
+   ============================================================ */
+#wpadminbar a,
+#wpadminbar a:hover,
+#wpadminbar a:focus,
+#wpadminbar a:visited,
+#wpadminbar .ab-item,
+#wpadminbar .ab-item:hover {
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  text-decoration: none !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 8px !important;
+  background: transparent !important;
+  width: auto !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+#wpadminbar .ab-sub-wrapper a,
+#wpadminbar .ab-submenu .ab-item,
+#wpadminbar .ab-submenu .ab-item:hover {
+  height: 28px !important;
+  line-height: 28px !important;
+  font-size: 13px !important;
+  padding: 0 8px !important;
+  display: flex !important;
+}
 
 /* ============================================================
    SALE BADGE – „Výhodněji" bílé pozadí, černý text
@@ -1347,4 +1466,60 @@ body.cfb-modal-open {
   margin: 0 !important;
   padding: 0 !important;
   font-size: 1em !important;
+}
+
+/* (hover pravidlo přesunuto nahoru do bloku viditelnosti tlačítek) */
+
+
+/* WooCommerce Blocks: skrýt konkrétní detail produktu v košíku i minikošíku */
+.wc-block-cart .wc-block-components-product-metadata
+  li.wc-block-components-product-details__v-b-r-bal-ku,
+.wc-block-mini-cart .wc-block-components-product-metadata
+  li.wc-block-components-product-details__v-b-r-bal-ku {
+  display: none !important;
+}
+
+.woocommerce-js div.product form.cart .button.single_add_to_cart_button:hover {
+  background: #fff !important;
+  color: #111 !important;
+  border-color: #111 !important;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+
+/* woocommerce-js hover – odstraněno, přebývá globálním hover blokem */
+
+/* ── Hlídací pes – tlačítko na stránce produktu i v archivu ── */
+
+/* Stránka produktu: <button class="button" title="Upozorníme Tě..."> */
+.stock-notify-wrapper .button,
+#stock-notify-form .button {
+  background: #111 !important;
+  color: #fff !important;
+  border: 1px solid #111 !important;
+  border-radius: 0 !important;
+  padding: 10px 24px !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  transition: background 0.2s, color 0.2s, font-size 0.18s ease, transform 0.2s, box-shadow 0.2s !important;
+}
+
+.stock-notify-wrapper .button:hover,
+#stock-notify-form .button:hover {
+  background: #fff !important;
+  color: #111 !important;
+  border: 1px solid #111 !important;
+  font-size: 1.06rem !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10) !important;
+}
+
+/* Archiv: .sp-hlidaci-btn má třídu custom-product-btn – override display pro .open */
+.sp-product-item.open .sp-hlidaci-btn,
+.sp-product-item:hover .sp-hlidaci-btn {
+  display: inline-block !important;
 }
