@@ -1523,3 +1523,186 @@ body.cfb-modal-open {
 .sp-product-item:hover .sp-hlidaci-btn {
   display: inline-block !important;
 }
+
+/* ============================================================
+   VARIANTY – out-of-stock option v <select> + hlídací pes pod košíkem
+   ============================================================ */
+
+/* Option "– není skladem" – šedý text */
+.variations select option[data-stock="outofstock"] {
+  color: #888;
+}
+
+/* Wrapper hlídacího psa pod .single_variation_wrap */
+#hp-variation-wrapper {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 12px;
+}
+
+#hp-variation-oos-msg {
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #c00 !important;
+  margin-bottom: 8px !important;
+}
+
+#hp-variation-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ── Hlídací pes na stránce produktu s variantami – pod košíkovým řádkem ── */
+#hp-variation-wrapper {
+  display: block !important;
+  width: 100% !important;
+  clear: both !important;
+  margin-top: 16px !important;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 12px;
+}
+
+/* ── Hlídací pes na stránce produktu s variantami ── */
+#hp-variation-form-row {
+  display: flex;          /* výchozí; JS přepíše na flex při show() */
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+#hp-variation-form-row .sp-hlidaci-icon {
+  width: auto;
+  height: 38px;
+  flex-shrink: 0;
+  color: #333;
+}
+
+#hp-variation-form-row .sp-hlidaci-email {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+#hp-variation-btn {
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+#hp-variation-form input[type="email"] {
+  flex: 1;
+  min-width: 0;
+}
+
+#hp-variation-form .button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: normal !important;
+  overflow: visible !important;
+  white-space: nowrap;
+}
+
+#hp-variation-response {
+  font-size: 0.9rem;
+  margin-top: 6px !important;
+}
+
+/* ── Hlídací pes – tlačítko na stránce produktu i v archivu ── */
+
+/* Stránka produktu: <button class="button" title="Upozorníme Tě..."> */
+.stock-notify-wrapper .button,
+#stock-notify-form .button {
+  background: #111 !important;
+  color: #fff !important;
+  border: 1px solid #111 !important;
+  border-radius: 0 !important;
+  padding: 10px 24px !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  transition: background 0.2s, color 0.2s, font-size 0.18s ease, transform 0.2s, box-shadow 0.2s !important;
+}
+
+.stock-notify-wrapper .button:hover,
+#stock-notify-form .button:hover {
+  background: #fff !important;
+  color: #111 !important;
+  border: 1px solid #111 !important;
+  font-size: 1.06rem !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10) !important;
+}
+
+/* Archiv: .sp-hlidaci-btn má třídu custom-product-btn – override display pro .open */
+.sp-product-item.open .sp-hlidaci-btn,
+.sp-product-item:hover .sp-hlidaci-btn {
+  display: inline-block !important;
+}
+
+/* ── Ikona hlídacího psa – jednotná velikost na všech stránkách ── */
+.sp-hlidaci-icon {
+  width: auto !important;
+  height: 38px !important;
+  flex-shrink: 0 !important;
+  color: #333 !important;
+}
+
+/* ============================================================
+   VARIANTY – out-of-stock option v <select> + hlídací pes pod košíkem
+   ============================================================ */
+
+/* Option "– není skladem" – šedý text */
+.variations select option[data-stock="outofstock"] {
+  color: #888;
+}
+
+/* Wrapper hlídacího psa pod .single_variation_wrap */
+#hp-variation-wrapper {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 12px;
+}
+
+#hp-variation-oos-msg {
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #c00 !important;
+  margin-bottom: 8px !important;
+}
+
+#hp-variation-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#hp-variation-form input[type="email"] {
+  flex: 1;
+  min-width: 0;
+}
+
+#hp-variation-form .button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: normal !important;
+  overflow: visible !important;
+  white-space: nowrap;
+}
+
+#hp-variation-response {
+  font-size: 0.9rem;
+  margin-top: 6px !important;
+}
