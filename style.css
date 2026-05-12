@@ -209,13 +209,16 @@ a.checkout-button:hover,
 .astra-shop-summary-wrap a.single_add_to_cart_button:hover, 
 .astra-shop-summary-wrap a.add_to_cart_button:hover
 .woocommerce-js div.product form.cart .button.single_add_to_cart_button:hover,
+.woocommerce-form-register .button:hover,
+.woocommerce-form-login .button:hover,
+.woocommerce-form-coupon .button:hover 
  {
   background: #fff !important;
   color: #111 !important;
   border: 1px solid #111 !important;
   font-size: 1.06rem !important;
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10) !important;
   text-decoration: none !important;
 }
 
