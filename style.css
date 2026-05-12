@@ -1709,3 +1709,42 @@ body.cfb-modal-open {
   font-size: 0.9rem;
   margin-top: 6px !important;
 }
+
+#hp-variation-form-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+#hp-variation-form-row .sp-hlidaci-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+#hp-variation-form-row .sp-hlidaci-icon {
+  width: auto;
+  height: 38px;
+  flex-shrink: 0;
+  color: #333;
+}
+
+#hp-variation-form-row .sp-hlidaci-email {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+#hp-variation-btn,
+#hp-variation-add-to-cart-dummy {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+#hp-variation-add-to-cart-dummy {
+  opacity: .55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
