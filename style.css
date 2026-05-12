@@ -1748,3 +1748,81 @@ body.cfb-modal-open {
   cursor: not-allowed;
   pointer-events: none;
 }
+
+/* ============================================================
+   HLÍDACÍ PES – single product / bundles layout fix
+   ============================================================ */
+
+/* Variable i simple řádek držet v jedné linii */
+#hp-variation-form-row,
+#hp-simple-wrapper .hp-simple-form-row,
+#hp-simple-wrapper .sp-hlidaci-form {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-wrap: nowrap !important;
+  width: 100% !important;
+}
+
+#hp-variation-form-row .sp-hlidaci-icon-wrap,
+#hp-simple-wrapper .sp-hlidaci-icon-wrap {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 auto !important;
+}
+
+#hp-variation-form-row .sp-hlidaci-icon,
+#hp-simple-wrapper .sp-hlidaci-icon {
+  width: auto !important;
+  height: 38px !important;
+  flex-shrink: 0 !important;
+  color: #333 !important;
+}
+
+#hp-variation-form-row .sp-hlidaci-email,
+#hp-simple-wrapper .sp-hlidaci-email {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+#hp-variation-btn,
+#hp-variation-add-to-cart-dummy,
+#hp-simple-wrapper .sp-hlidaci-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+}
+
+/* Simple/bundle – přebít globální display:none z .custom-product-btn */
+.single-product #hp-simple-wrapper .custom-product-btn,
+.single-product #hp-simple-wrapper .sp-hlidaci-btn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Dummy add to cart u variant – jen vizuální doplněk */
+#hp-variation-add-to-cart-dummy {
+  opacity: .55 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+/* Responsive fallback */
+@media (max-width: 680px) {
+  #hp-variation-form-row,
+  #hp-simple-wrapper .hp-simple-form-row,
+  #hp-simple-wrapper .sp-hlidaci-form {
+    flex-wrap: wrap !important;
+  }
+
+  #hp-variation-form-row .sp-hlidaci-email,
+  #hp-simple-wrapper .sp-hlidaci-email {
+    width: 100% !important;
+    flex-basis: 100% !important;
+  }
+}
