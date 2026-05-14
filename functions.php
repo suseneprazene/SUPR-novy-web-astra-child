@@ -604,3 +604,8 @@ add_action( 'wp_footer', function() {
 </script>
     <?php
 }, 20 );
+
+/**
+ * Vypnutí emailových notifikací o aktualizacích pluginů
+ */
+add_filter( 'auto_plugin_update_send_email', '__return_false' );

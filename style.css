@@ -170,7 +170,12 @@ a.checkout-button,
 .wc-block-cart__submit-button,
 .woocommerce .woocommerce-error .button, .woocommerce .woocommerce-info .button, .woocommerce .woocommerce-message .button, .woocommerce-page .woocommerce-error .button, .woocommerce-page .woocommerce-info .button, .woocommerce-page .woocommerce-message .button,
 .wp-block-latest-posts.wp-block-latest-posts__list li .wp-block-latest-posts__read-more,
-.category-item .custom-product-btn {
+.category-item .custom-product-btn
+.sklad-mode-btn
+.wp-block-latest-posts.wp-block-latest-posts__list li .wp-block-latest-posts__read-more,
+.wp-elements-1660f817d32f47437cd8e469524fb728 a:where(:not(.wp-element-button))
+
+ {
   background: #111 !important;
   color: #fff !important;
   border: 1px solid #111 !important;
@@ -211,7 +216,9 @@ a.checkout-button:hover,
 .woocommerce-js div.product form.cart .button.single_add_to_cart_button:hover,
 .woocommerce-form-register .button:hover,
 .woocommerce-form-login .button:hover,
-.woocommerce-form-coupon .button:hover 
+.woocommerce-form-coupon .button:hover, .sklad-mode-btn:hover,
+.wp-block-latest-posts.wp-block-latest-posts__list li .wp-block-latest-posts__read-more:hover,
+.wp-elements-1660f817d32f47437cd8e469524fb728 a:where(:not(.wp-element-button)):hover
  {
   background: #fff !important;
   color: #111 !important;
@@ -1856,4 +1863,26 @@ body.cfb-modal-open {
   align-items: center;
   justify-content: center;
   white-space: nowrap;
+}
+
+.woocommerce-js div.product .product_meta,
+.woocommerce-js div.product .product_meta>span,
+.woocommerce-js div.product div.summary .single-product-category{
+ display: none !important;
+ }
+
+body.home .custom-product-btn,
+body.home .custom-product-btn:link,
+body.home .custom-product-btn:visited,
+body.home .custom-product-btn span,
+body.home a.custom-product-btn,
+body.home a.custom-product-btn:link,
+body.home a.custom-product-btn:visited {
+  color: #fff !important;
+}
+
+body.home .custom-product-btn:hover,
+body.home .custom-product-btn:hover span,
+body.home a.custom-product-btn:hover {
+  color: #111 !important;
 }
